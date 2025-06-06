@@ -1,0 +1,600 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanise - AI-Powered Job Matching for Sales Professionals</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins (for headings) and Lato (for body text) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles based on Humanise Brand Guide */
+        :root {
+            --color-coral: #F76F5E;
+            --color-soft-peach: #FFDABE;
+            --color-charcoal: #2E2E2E;
+            --color-ivory: #FFF;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif; /* Default body font */
+            background-color: var(--color-ivory);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif; /* Headings font */
+            font-weight: 600;
+            color: var(--color-charcoal);
+        }
+
+        .uppercase-text {
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Reusable section styling */
+        .section-container {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero section specific background */
+        #hero {
+            background: linear-gradient(135deg, rgba(247, 111, 94, 0.9), rgba(46, 46, 46, 0.9)), url('https://placehold.co/1920x1080/2E2E2E/F76F5E?text=Dynamic+Cityscape+Background');
+            background-size: cover;
+            background-position: center;
+            color: var(--color-ivory);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .humanise-logo-header {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--color-coral); /* Coral color from brand guide */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .humanise-logo-header .person-icon {
+            color: var(--color-coral);
+            font-size: 2.2rem;
+            line-height: 1;
+        }
+
+        /* Card styling */
+        .card {
+            background-color: var(--color-ivory);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Image placeholders - now applied to actual img tags for consistency */
+        img.product-mockup {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #666;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            /* Placeholder background for empty space, actual image will cover */
+            background-image: linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%);
+            background-size: 20px 20px;
+            object-fit: cover; /* Ensure image covers the area, cropping if necessary */
+        }
+
+
+        /* Timeline specific styles (simplified for web) */
+        .timeline-item-web {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .timeline-item-web::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--color-coral);
+            z-index: 0;
+            border-radius: 2px;
+        }
+        .timeline-icon-web {
+            font-size: 1.8rem;
+            color: var(--color-coral);
+            background-color: var(--color-ivory);
+            border: 3px solid var(--color-coral);
+            border-radius: 50%;
+            padding: 0.4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+            margin-right: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Table styling */
+        .web-data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .web-data-table th, .web-data-table td {
+            border: 1px solid var(--color-soft-peach);
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .web-data-table th {
+            background-color: var(--color-coral);
+            color: var(--color-ivory);
+            font-weight: 600;
+        }
+        .web-data-table tr:nth-child(even) {
+            background-color: var(--color-soft-peach);
+        }
+        .web-data-table tr:hover {
+            background-color: rgba(247, 111, 94, 0.2);
+        }
+        .web-data-table .highlight-column {
+            background-color: rgba(247, 111, 94, 0.1);
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: var(--color-charcoal);
+            color: var(--color-ivory);
+            padding: 2rem;
+            text-align: center;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header / Navigation (Optional for single page, but good for branding) -->
+    <header class="bg-ivory shadow-md py-4 px-8 flex justify-between items-center sticky top-0 z-50 rounded-b-xl">
+        <a href="#hero" class="humanise-logo-header">
+            <i class="fas fa-user person-icon"></i>humanise
+        </a>
+        <nav class="hidden md:flex space-x-6">
+            <a href="#problem" class="text-charcoal hover:text-coral transition-colors">Problem</a>
+            <a href="#solution" class="text-charcoal hover:text-coral transition-colors">Solution</a>
+            <a href="#market" class="text-charcoal hover:text-coral transition-colors">Market</a>
+            <a href="#how-it-works" class="text-charcoal hover:text-coral transition-colors">How It Works</a>
+            <a href="#pricing" class="text-charcoal hover:text-coral transition-colors">Pricing</a>
+            <a href="#team" class="text-charcoal hover:text-coral transition-colors">Founder</a>
+            <a href="#contact" class="bg-coral text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors shadow-md">Contact Us</a>
+        </nav>
+        <button class="md:hidden text-charcoal text-2xl">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative">
+        <div class="section-container text-white">
+            <h1 class="text-5xl md:text-7xl font-extrabold uppercase-text tracking-tight mb-6 leading-tight">
+                Humanise
+            </h1>
+            <p class="text-3xl md:text-4xl font-semibold mb-8">
+                AI-Powered, Video-First Job-Matching Platform for Sales Professionals
+            </p>
+            <p class="text-xl md:text-2xl italic max-w-2xl mx-auto mb-10">
+                “Replacing resumes and job postings with a humanized, video-driven matching experience.”
+            </p>
+            <a href="#contact" class="bg-white text-coral px-8 py-4 rounded-full font-bold text-xl shadow-lg hover:bg-soft-peach transition-colors inline-block animate-bounce-slow">
+                Get Investor Deck
+            </a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="section-container bg-soft-peach rounded-b-xl">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">The Broken Job Application Experience</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="card">
+                <h3 class="text-2xl font-semibold text-coral mb-4">Common Pain Points</h3>
+                <ul class="list-disc list-inside space-y-3 text-lg">
+                    <li><strong class="text-charcoal">Resumes Are Impersonal:</strong> Static PDFs fail to showcase critical sales skills like communication and rapport.</li>
+                    <li><strong class="text-charcoal">Cluttered Job Boards:</strong> Job seekers waste hours sifting through irrelevant listings, with high application unresponsiveness.</li>
+                    <li><strong class="text-charcoal">Poor Fit & High Drop-Off:</strong> Employers struggle to gauge culture and soft skills, leading to costly mismatches.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="text-2xl font-semibold text-coral mb-4">Sales Professional Frustrations</h3>
+                <ul class="list-disc list-inside space-y-3 text-lg">
+                    <li>Essential people skills are lost in traditional one-page resumes.</li>
+                    <li>Niche sites are expensive and still keyword-focused, ignoring personality.</li>
+                    <li>Significant time and cost drain for both candidates and recruiters due to prolonged mismatches.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="section-container bg-ivory rounded-t-xl">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">Humanise: A Video-First, AI-Driven Job Platform</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="card">
+                <h3 class="text-2xl font-semibold text-coral mb-4">For Candidates</h3>
+                <ul class="list-disc list-inside space-y-3 text-lg">
+                    <li>Record a 60-second video showcasing personality, achievements, and preferences.</li>
+                    <li>AI analyzes video content to auto-populate a dynamic profile, reducing manual forms.</li>
+                    <li>Receive daily AI-recommended job matches focused on fit, culture, and compensation.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="text-2xl font-semibold text-coral mb-4">For Employers</h3>
+                <ul class="list-disc list-inside space-y-3 text-lg">
+                    <li>Browse candidate video thumbnails instead of traditional resumes.</li>
+                    <li>Leverage AI-generated "fit scores" for optimal matching (sales experience, territory, culture).</li>
+                    <li>Integrated chat and calendar booking for streamlined 1:1 screening calls.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 text-center">
+            <h3 class="text-3xl font-semibold text-charcoal mb-6">Our Key Differentiators:</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card flex flex-col items-center">
+                    <i class="fas fa-video text-5xl text-coral mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Video + AI Matching</h4>
+                    <p class="text-center">Authentic screening based on presence, not just keywords.</p>
+                </div>
+                <div class="card flex flex-col items-center">
+                    <i class="fas fa-users-line text-5xl text-coral mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Sales Professional Focus</h4>
+                    <p class="text-center">Deep understanding of sales metrics like quotas and territories.</p>
+                </div>
+                <div class="card flex flex-col items-center">
+                    <i class="fas fa-dollar-sign text-5xl text-coral mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Competitive Pricing</h4>
+                    <p class="text-center">Accessible for job seekers ($20/month) and flexible for employers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity Section -->
+    <section id="market" class="section-container bg-soft-peach">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">Market Opportunity</h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-3xl font-semibold text-coral mb-6">Sizing Our Impact:</h3>
+                <ul class="list-disc list-inside space-y-4 text-lg">
+                    <li><strong class="text-charcoal">TAM (Total Addressable Market):</strong> U.S. online recruitment market &asymp; <span class="font-bold text-coral">$30 billion (2025)</span>.</li>
+                    <li><strong class="text-charcoal">SAM (Serviceable Available Market):</strong> &asymp; <span class="font-bold text-coral">14 million U.S. sales professionals</span>, with an annual spend of &asymp; <span class="font-bold text-coral">$500 million</span> on sales-focused job boards.</li>
+                    <li><strong class="text-charcoal">SOM (Serviceable Obtainable Market):</strong> Year 1 goal: Capture 1% of U.S. sales job-seeker subscriptions &rarr; 140,000 users &rarr; <span class="font-bold text-coral">$3.36 million ARR</span>.</li>
+                </ul>
+                <p class="text-lg mt-6">Our target includes 2,000 mid-market SaaS/tech firms in first 18 months.</p>
+            </div>
+            <div>
+                <img src="https://placehold.co/600x400/2E2E2E/F76F5E?text=Market+Size+Bar+Chart" alt="Market Size Bar Chart (TAM, SAM, SOM)" class="product-mockup w-full h-80 object-cover">
+                <table class="web-data-table rounded-xl overflow-hidden mt-8">
+                    <thead>
+                        <tr>
+                            <th>Market Category</th>
+                            <th>Size (USD)</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>U.S. Online Recruitment Market</td>
+                            <td>$30 billion</td>
+                            <td>Staffing Industry Analysts (2025)</td>
+                        </tr>
+                        <tr>
+                            <td>Sales-Focused Job Board Spend</td>
+                            <td>$500 million (annual)</td>
+                            <td>Sales Management Association (2024)</td>
+                        </tr>
+                        <tr>
+                            <td>Year 1 SOM (1% of sales pros)</td>
+                            <td>$3.36 million (ARR)</td>
+                            <td>Internal Projection</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section-container bg-ivory rounded-t-xl">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">How Humanise Works</h2>
+        <div class="space-y-16">
+            <!-- Video Profile Creation -->
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-semibold text-coral mb-4">1. Create Your Video Profile</h3>
+                    <p class="text-lg mb-4">Candidates record a concise 60-second video directly within the app, highlighting their personality, top sales achievements, and ideal role preferences.</p>
+                    <ul class="list-disc list-inside space-y-2 text-lg">
+                        <li>AI extracts key data for a dynamic, auto-populated profile.</li>
+                        <li>No more lengthy, tedious form filling!</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/FFDABE/2E2E2E?text=Candidate+Video+Recording+Screen" alt="Candidate Video Recording Screen Mockup" class="product-mockup w-full h-72 object-cover shadow-lg">
+                </div>
+            </div>
+
+            <!-- AI Matching Dashboard -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-semibold text-coral mb-4">2. Receive AI-Powered Matches</h3>
+                    <p class="text-lg mb-4">Our AI intelligently analyzes candidate profiles and employer needs to deliver highly relevant job matches daily.</p>
+                    <ul class="list-disc list-inside space-y-2 text-lg">
+                        <li>Candidates see their "Top 5 Matches" with detailed fit scores.</li>
+                        <li>Filters for territory and industry vertical (e.g., healthcare, SaaS, finance).</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/2E2E2E/F76F5E?text=Candidate+Job+Match+Dashboard" alt="Candidate Job Match Dashboard Mockup" class="product-mockup w-full h-72 object-cover shadow-lg">
+                </div>
+            </div>
+
+            <!-- Employer Review Portal -->
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-semibold text-coral mb-4">3. Employers Discover Talent</h3>
+                    <p class="text-lg mb-4">Employers gain access to a streamlined portal to browse candidate video thumbnails, "Fit %," and key highlights.</p>
+                    <ul class="list-disc list-inside space-y-2 text-lg">
+                        <li>Quickly identify top matches with AI-generated insights.</li>
+                        <li>One-click scheduling for intro calls via integrated calendar.</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/FFDABE/2E2E2E?text=Employer+Review+Portal" alt="Employer Review Portal Mockup" class="product-mockup w-full h-72 object-cover shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model & Pricing Section -->
+    <section id="pricing" class="section-container bg-soft-peach">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">Revenue Streams & Pricing</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card flex flex-col items-center text-center p-6">
+                <i class="fas fa-user-tag text-5xl text-coral mb-4"></i>
+                <h3 class="text-2xl font-semibold text-charcoal mb-2">Job Seeker Subscription</h3>
+                <p class="text-xl font-bold text-coral mb-4">$20/month</p>
+                <ul class="list-disc list-inside text-lg text-left w-full px-4">
+                    <li>Unlimited video profiles & job matches.</li>
+                    <li>Early-access for first 3,000 users (3 months free).</li>
+                </ul>
+            </div>
+            <div class="card flex flex-col items-center text-center p-6">
+                <i class="fas fa-briefcase text-5xl text-coral mb-4"></i>
+                <h3 class="text-2xl font-semibold text-charcoal mb-2">Employer Plans</h3>
+                <p class="text-xl font-bold text-charcoal mb-4">Flexible Tiers</p>
+                <ul class="list-disc list-inside text-lg text-left w-full px-4">
+                    <li><strong>Freemium:</strong> Up to 3 job postings free.</li>
+                    <li><strong>Basic ($199/month):</strong> Up to 10 postings, AI ranking for 200 candidates.</li>
+                    <li><strong>Pro ($499/month):</strong> Unlimited postings, priority AI matches, dedicated CS.</li>
+                </ul>
+            </div>
+            <div class="card flex flex-col items-center text-center p-6">
+                <i class="fas fa-lightbulb text-5xl text-coral mb-4"></i>
+                <h3 class="text-2xl font-semibold text-charcoal mb-2">Value-Add Services</h3>
+                <p class="text-xl font-bold text-charcoal mb-4">(Future Upsell)</p>
+                <ul class="list-disc list-inside text-lg text-left w-full px-4">
+                    <li>Custom company culture videos ($50/video).</li>
+                    <li>Premium AI insights (benchmarking, salary analytics).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Landscape Section -->
+    <section id="competitive" class="section-container bg-ivory">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">Competitive Landscape</h2>
+        <h3 class="text-3xl font-semibold text-coral text-center mb-8">How We Compare</h3>
+
+        <div class="overflow-x-auto rounded-xl shadow-lg">
+            <table class="web-data-table min-w-full">
+                <thead>
+                    <tr class="bg-coral text-ivory">
+                        <th class="py-3 px-4">Feature / Provider</th>
+                        <th class="py-3 px-4 highlight-column">Humanise</th>
+                        <th class="py-3 px-4">MedReps</th>
+                        <th class="py-3 px-4">LinkedIn Jobs</th>
+                        <th class="py-3 px-4">ZipRecruiter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-3 px-4">Video-First Profiles</td>
+                        <td class="py-3 px-4 highlight-column text-center text-green-600"><i class="fas fa-check-circle"></i> (Core Focus)</td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">AI-Driven Match Scoring</td>
+                        <td class="py-3 px-4 highlight-column text-center text-green-600"><i class="fas fa-check-circle"></i></td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i> (keyword-based)</td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">Sales-Specific Vertical</td>
+                        <td class="py-3 px-4 highlight-column text-center text-green-600"><i class="fas fa-check-circle"></i> (Sales Only)</td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i> (Healthcare Only)</td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i> (All Roles)</td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i> (All Roles)</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">Seeker Subscription ($)</td>
+                        <td class="py-3 px-4 highlight-column text-center">$20/month</td>
+                        <td class="py-3 px-4 text-center">$22/month</td>
+                        <td class="py-3 px-4 text-center">$29.99/month</td>
+                        <td class="py-3 px-4 text-center">$49.99/month</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">Free Employer Listings</td>
+                        <td class="py-3 px-4 highlight-column text-center">3</td>
+                        <td class="py-3 px-4 text-center">0</td>
+                        <td class="py-3 px-4 text-center">0</td>
+                        <td class="py-3 px-4 text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">ATS Integration (Planned)</td>
+                        <td class="py-3 px-4 highlight-column text-center">Q4 2025</td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                        <td class="py-3 px-4 text-center text-red-600"><i class="fas fa-times-circle"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="text-center italic text-xl mt-8 max-w-2xl mx-auto">
+            “Humanise’s vertical focus on sales and video-first AI matching delivers deeper, faster fit than generalist platforms.”
+        </p>
+    </section>
+
+    <!-- Traction & Milestones Section -->
+    <section id="traction" class="section-container bg-soft-peach">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">Traction & Milestones</h2>
+        <div class="space-y-8">
+            <div class="timeline-item-web">
+                <div class="timeline-icon-web"><i class="fas fa-rocket"></i></div>
+                <div class="card w-full">
+                    <h3 class="text-xl font-bold uppercase-text text-charcoal mb-2">Landing Page Launch (May 2025)</h3>
+                    <p class="text-lg">Achieved <span class="font-bold text-coral">1,200 waitlist signups</span> in just 10 days through LinkedIn outreach and partner blogs.</p>
+                </div>
+            </div>
+            <div class="timeline-item-web">
+                <div class="timeline-icon-web"><i class="fas fa-handshake"></i></div>
+                <div class="card w-full">
+                    <h3 class="text-xl font-bold uppercase-text text-charcoal mb-2">Five Pilot Employers (June 2025)</h3>
+                    <p class="text-lg">Secured MOUs with 3 mid-market SaaS companies and 2 healthcare startups (~1,000 employees) to trial candidate videos for 60 days.</p>
+                </div>
+            </div>
+            <div class="timeline-item-web">
+                <div class="timeline-icon-web"><i class="fas fa-mobile-alt"></i></div>
+                <div class="card w-full">
+                    <h3 class="text-xl font-bold uppercase-text text-charcoal mb-2">Beta App Development (June–July 2025)</h3>
+                    <p class="text-lg">UI/UX wireframes finalized and AI prototype demonstrates <span class="font-bold text-coral">85% match accuracy</span> on small sample data.</p>
+                </div>
+            </div>
+            <div class="timeline-item-web">
+                <div class="timeline-icon-web"><i class="fas fa-calendar-alt"></i></div>
+                <div class="card w-full">
+                    <h3 class="text-xl font-bold uppercase-text text-charcoal mb-2">Projected Public Beta (Q4 2025)</h3>
+                    <p class="text-lg">Targeting <span class="font-bold text-coral">5,000 paid subscribers by December 2025</span> with an employer churn target of less than 5%.</p>
+                </div>
+            </div>
+            <div class="timeline-item-web">
+                <div class="timeline-icon-web"><i class="fas fa-trophy"></i></div>
+                <div class="card w-full">
+                    <h3 class="text-xl font-bold uppercase-text text-charcoal mb-2">Pending "Innovative Startup" Grant (Q3 2025)</h3>
+                    <p class="text-lg">Anticipating a <span class="font-bold text-coral">$50K award</span> to accelerate our AI development initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section-container bg-ivory rounded-b-xl">
+        <h2 class="text-4xl uppercase-text font-bold text-center mb-12">Meet the Founder</h2>
+        <h3 class="text-3xl font-semibold text-coral text-center mb-8">Jon Tomin – Founder & CEO</h3>
+
+        <div class="flex flex-col items-center text-center max-w-lg mx-auto">
+            <img src="uploaded:29D31913-0813-4295-BF4B-B9C653A1ABD3_4_5005_c.jpeg-38869d24-28b3-4f58-9a5b-3555e0fcc6fd" alt="Jon Tomin Headshot" class="w-48 h-48 rounded-full mb-6 shadow-lg object-cover">
+            <h4 class="text-2xl font-semibold uppercase-text mb-2">Jon Tomin</h4>
+            <p class="text-xl text-coral mb-4">Founder & CEO</p>
+            <p class="text-lg">
+                Jon brings 15+ years of unparalleled experience in healthcare AI and SaaS sales, with a proven track record of closing over $250 million in deals. As the former co-owner of Paulsens Pharmacy, he possesses a unique blend of entrepreneurial spirit and deep industry expertise. His vision for Humanise is to transform the job-matching landscape by leveraging cutting-edge AI and a human-centric, video-first approach.
+            </p>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact Section -->
+    <section id="contact" class="section-container bg-coral text-white text-center rounded-t-xl">
+        <h2 class="text-4xl uppercase-text font-bold mb-8">Let's Humanise the Future of Job Matching.</h2>
+        <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+            We are seeking a **$1.5 Million Seed Round** to accelerate our growth and revolutionize sales recruitment.
+            Join us in building a more human, video-driven matching experience.
+        </p>
+
+        <div class="bg-ivory text-charcoal rounded-xl p-8 shadow-xl max-w-2xl mx-auto">
+            <h3 class="text-3xl font-semibold text-coral mb-6">Why Invest Now?</h3>
+            <ul class="list-disc list-inside space-y-3 text-lg text-left mb-8">
+                <li><span class="font-bold">Proven Early Traction:</span> 1,200 waitlist signups & 5 pilot employers already committed.</li>
+                <li><span class="font-bold">Underserved Vertical:</span> Deep focus on the niche sales job market.</li>
+                <li><span class="font-bold">Experienced Leadership:</span> Founder's track record of $250M+ in deals.</li>
+                <li><span class="font-bold">Clear Path to Profitability:</span> Projected $15M revenue by Q4 2027 and positive EBITDA by Q3 2026.</li>
+            </ul>
+
+            <h3 class="text-3xl font-semibold text-coral mb-6">Next Steps:</h3>
+            <ul class="list-disc list-inside space-y-3 text-lg text-left mb-8">
+                <li>Schedule a 30-minute live demo of our working prototype.</li>
+                <li>Connect with our AI advisor (Dr. Sarah Patel) for a technical deep dive.</li>
+                <li>Review the full financial model (available upon request).</li>
+                <li>Download our comprehensive <a href="#" class="text-coral underline hover:no-underline font-bold">Investor Deck (PDF)</a>.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold text-charcoal mb-4">Contact Jon Tomin:</h3>
+            <p class="text-xl font-bold text-coral">jon@humanise.com</p>
+            <p class="text-xl text-charcoal">jtomin14@gmail.com</p>
+            <p class="text-xl text-charcoal">(555) 123-4567</p>
+            <a href="mailto:jon@humanise.com" class="mt-6 inline-block bg-coral text-white px-8 py-3 rounded-full font-bold text-lg shadow-md hover:bg-opacity-90 transition-colors">
+                Email Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="text-lg">&copy; 2025 Humanise. All rights reserved.</p>
+        <p class="text-md italic mt-2">Let’s make job search more human, one video at a time.</p>
+    </footer>
+
+    <!-- Simple Mobile Menu (for demonstration - a full JS implementation would be needed) -->
+    <script>
+        document.querySelector('header button').addEventListener('click', function() {
+            const nav = document.querySelector('header nav');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-full');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('w-full');
+            nav.classList.toggle('bg-ivory');
+            nav.classList.toggle('shadow-lg');
+            nav.classList.toggle('py-4');
+            nav.classList.toggle('items-center');
+            nav.classList.toggle('space-y-4');
+            nav.classList.toggle('md:hidden'); /* Ensure it stays hidden on larger screens */
+        });
+    </script>
+</body>
+</html>
+
